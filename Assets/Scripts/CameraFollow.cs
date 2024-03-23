@@ -1,4 +1,3 @@
-// Script taken from Unity Example 01
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,11 +5,13 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public Transform target;
-    float z = -10;//Used to maintain the camera's z level, sometimes important for rendering
+    public Vector2 minBounds;
+    public Vector2 maxBounds;
+    float z = -5; // Used to maintain the camera's z level, sometimes important for rendering
 
     void Start()
     {
-        if(!target)
+        if (!target)
         {
             enabled = false;
             Debug.Log("No target");
@@ -19,9 +20,14 @@ public class CameraFollow : MonoBehaviour
 
     void Update()
     {
-        z = transform.position.z;
-        Vector3 v = target.position;
-        v.z = z;
-        transform.position = v;
+        if (target)
+        {
+            z = transform.position.z;
+            Vector3 targetPosition = target.position;
+            targetPosition.z = z;
+            targetPosition.x = Mathf.Clamp(targetPosition.x, minBounds.x, maxBounds.x);
+            targetPosition.y = Mathf.Clamp(targetPosition.y, minBounds.y, maxBounds.y);
+            transform.position = targetPosition;
+        }
     }
 }

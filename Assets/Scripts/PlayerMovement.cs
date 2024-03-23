@@ -1,12 +1,14 @@
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Rigidbody2D rigidBody;
-    private Animator animator;
-    private SpriteRenderer spriteRenderer;
-    private BoxCollider2D boxCollider;
+    public Rigidbody2D rigidBody;
+    public Animator animator;
+    public SpriteRenderer spriteRenderer;
+    public BoxCollider2D boxCollider;
 
     private float movingHori;
     [SerializeField] 
@@ -16,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
     private enum MovementState {idle, running, jumping, falling};
     [SerializeField]
     private LayerMask jumponGround;
+    [SerializeField]
+    public AudioSource jumpSound;
 
     // Start is called before the first frame update
     void Start()
@@ -34,16 +38,17 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    private void Movement() {
+    public void Movement() {
         movingHori = Input.GetAxis("Horizontal");
         rigidBody.velocity = new Vector2(movingHori * movingSpeed, rigidBody.velocity.y);
 
-        if ((Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && ontheGround()) {
+        if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && ontheGround()) {
+            jumpSound.Play();
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumping);
         }
     }
 
-    private void AnimationUpdate() {
+    public void AnimationUpdate() {
         MovementState state;
 
         if (Mathf.Abs(movingHori) > 0f)
@@ -70,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetInteger("state", (int)state);
     }
 
-    private bool ontheGround() {
+    public bool ontheGround() {
         return Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, 0.1f, jumponGround);
     }
 }

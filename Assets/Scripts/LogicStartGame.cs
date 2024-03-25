@@ -20,7 +20,7 @@ public class BeginGame : MonoBehaviour
     }
 
     public void startGame() {
-        SceneManager.LoadScene("Level 1");
+        SceneManager.LoadScene("Test Level");
     }
 
     public void instructionsGame() {

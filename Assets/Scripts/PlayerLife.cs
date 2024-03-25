@@ -10,11 +10,15 @@ public class PlayerLife : MonoBehaviour
     public Rigidbody2D rigidBody;
     [SerializeField]
     public AudioSource deathSound;
+    public Text lifeText;
+    public int maxLife = 3;
+    public int currentLife;
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         rigidBody = GetComponent<Rigidbody2D>();
+        currentLife = maxLife;
     }
 
     // Update is called once per frame
@@ -25,17 +29,39 @@ public class PlayerLife : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.CompareTag("Trap")) {
+            TakeLife(1);
+        }
+        else if (collision.gameObject.CompareTag("Heart")) {
+            AddLife(1);
+            Destroy(collision.gameObject);
+        }
+    }
+
+    public void TakeLife(int life) {
+        currentLife -= life;
+        UpdateLife();
+        if (currentLife <= 0) {
             Die();
         }
+    }
+
+    public void AddLife(int life) {
+        currentLife += life;
+        UpdateLife();
+    }
+
+    public void UpdateLife() {
+        lifeText.text = currentLife.ToString();
     }
 
     public void Die() {
         deathSound.Play();
         rigidBody.bodyType = RigidbodyType2D.Static;
         animator.SetTrigger("death");
+        SceneManager.LoadScene("Game Over");
     }
 
-    public void Restart() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
+    // public void Restart() {
+    //     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    // }
 }

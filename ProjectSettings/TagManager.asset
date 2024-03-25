@@ -7,6 +7,9 @@ TagManager:
   - Kiwi
   - Trap
   - Next Level
+  - Checkpoint
+  - Heart
+  - End Game
   layers:
   - Default
   - TransparentFX

@@ -60,8 +60,4 @@ public class PlayerLife : MonoBehaviour
         animator.SetTrigger("death");
         SceneManager.LoadScene("Game Over");
     }
-
-    // public void Restart() {
-    //     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    // }
 }

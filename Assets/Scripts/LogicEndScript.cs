@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -20,7 +19,7 @@ public class LogicEndScript : MonoBehaviour
     }
 
     public void restartGame() {
-        SceneManager.LoadScene("Level 1");
+        SceneManager.LoadScene("Test Level");
     }
 
     public void backtoMenu() {

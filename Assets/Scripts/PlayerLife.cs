@@ -13,6 +13,7 @@ public class PlayerLife : MonoBehaviour
     public Text lifeText;
     public int maxLife = 3;
     public int currentLife;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +26,12 @@ public class PlayerLife : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void OnBecameInvisible()
+    {
+        // TakeLife(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void OnCollisionEnter2D(Collision2D collision) {
@@ -56,8 +63,6 @@ public class PlayerLife : MonoBehaviour
 
     public void Die() {
         deathSound.Play();
-        rigidBody.bodyType = RigidbodyType2D.Static;
-        animator.SetTrigger("death");
         SceneManager.LoadScene("Game Over");
     }
 }

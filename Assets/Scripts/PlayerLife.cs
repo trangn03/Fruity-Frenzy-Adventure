@@ -38,7 +38,14 @@ public class PlayerLife : MonoBehaviour
         if (collision.gameObject.CompareTag("Trap")) {
             TakeLife(1);
         }
-        else if (collision.gameObject.CompareTag("Heart")) {
+        // else if (collision.gameObject.CompareTag("Heart")) {
+        //     AddLife(1);
+        //     Destroy(collision.gameObject);
+        // }
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.gameObject.CompareTag("Heart")) {
             AddLife(1);
             Destroy(collision.gameObject);
         }

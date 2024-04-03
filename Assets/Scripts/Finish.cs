@@ -20,15 +20,15 @@ public class Finish : MonoBehaviour
         
     }
 
-    public void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.gameObject.name == "Player") {
-            finishSound.Play();
-            isFinished = true;
-            Invoke("CompleteLevel", 1.5f);
-        }
-    }
+    // public void OnTriggerEnter2D(Collider2D collision) {
+    //     if (collision.gameObject.name == "Player") {
+    //         finishSound.Play();
+    //         isFinished = true;
+    //         Invoke("CompleteLevel", 1.5f);
+    //     }
+    // }
 
-    public void CompleteLevel() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
+    // public void CompleteLevel() {
+    //     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    // }
 }

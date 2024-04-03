@@ -1,15 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class CameraFollow : MonoBehaviour
 {
     public Transform target;
     public Vector2 minBounds;
     public Vector2 maxBounds;
-    float z = -5; // Used to maintain the camera's z level, sometimes important for rendering
+    public float offsetY = 0; // Offset to move camera downward
 
     void Start()
     {
@@ -24,11 +22,11 @@ public class CameraFollow : MonoBehaviour
     {
         if (target)
         {
-            z = transform.position.z;
             Vector3 targetPosition = target.position;
-            targetPosition.z = z;
             targetPosition.x = Mathf.Clamp(targetPosition.x, minBounds.x, maxBounds.x);
             targetPosition.y = Mathf.Clamp(targetPosition.y, minBounds.y, maxBounds.y);
+            targetPosition.y += offsetY; // Apply the offset
+            targetPosition.z = transform.position.z; // Maintain the camera's z level
             transform.position = targetPosition;
         }
     }

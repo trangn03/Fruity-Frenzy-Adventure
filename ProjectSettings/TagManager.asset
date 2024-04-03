@@ -4,12 +4,16 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Kiwi
   - Trap
   - Next Level
   - Checkpoint
   - Heart
   - End Game
+  - Item
+  - Trampoline
+  - Ice
+  - Kiwi
+  - Fan
   layers:
   - Default
   - TransparentFX

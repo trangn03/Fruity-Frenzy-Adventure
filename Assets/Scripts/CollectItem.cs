@@ -6,46 +6,49 @@ using UnityEngine.UI;
 
 public class CollectItem : MonoBehaviour
 {
-    public int kiwi = 0;
-    public int kiwiGoal = 5;
+    public int item = 0;
+    public int itemGoal = 5;
     public bool hasReachCheckpoint = false;
-    public Text kiwiText;
-    [SerializeField]
+    public Text itemText;
     public AudioSource collectSound;
-    // Start is called before the first frame update
+    public AudioSource finishSound;
+    public bool isFinished = false;
+
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        finishSound = GetComponent<AudioSource>();
     }
 
     public void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.gameObject.CompareTag("Kiwi")) {
+        if (collision.gameObject.CompareTag("Item")) {
             collectSound.Play();
             Destroy(collision.gameObject);
-            kiwi++;
-            kiwiText.text = kiwi.ToString();
+            item++;
+            itemText.text = item.ToString();
+            Debug.Log("Item collected. Total items: " + item);
         }
 
         if (collision.gameObject.CompareTag("Checkpoint")) {
             hasReachCheckpoint = true;
-            if (kiwi == kiwiGoal && hasReachCheckpoint) {
+            if (item == itemGoal && hasReachCheckpoint) {
+                Debug.Log("All items collected and checkpoint reached. Moving to next level.");
                 NextLevel();
             }
             else {
+                Debug.Log("Not enough items collected or checkpoint not reached. Reloading scene.");
                 ReloadScene();
             }
+        }
 
+        if (collision.gameObject.CompareTag("Player")) {
+            finishSound.Play();
+            isFinished = true;
+            Invoke("NextLevel", 1.5f); // This seems unnecessary as it will call NextLevel() again.
         }
     }
 
     public void NextLevel() {
-        SceneManager.LoadScene("Level 1");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void ReloadScene() {

@@ -46,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
             jumpSound.Play();
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumping);
         }
+        
     }
 
     public void AnimationUpdate() {
@@ -77,5 +78,15 @@ public class PlayerMovement : MonoBehaviour
 
     public bool ontheGround() {
         return Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, 0.1f, jumponGround);
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Check if collision is with a GameObject tagged as "Trampoline"
+        if (collision.gameObject.CompareTag("Trampoline"))
+        {
+            jumpSound.Play();
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumping * 1.5f); // Double jump height
+        }
     }
 }

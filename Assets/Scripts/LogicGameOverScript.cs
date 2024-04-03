@@ -19,7 +19,7 @@ public class LogicGameOverScript : MonoBehaviour
     }
     
     public void restartGame() {
-        SceneManager.LoadScene("Test Level");
+        SceneManager.LoadScene("Level 1");
     }
 
     public void backtoMenu() {

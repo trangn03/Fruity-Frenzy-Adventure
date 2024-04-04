@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8385889891348410610}
   m_Layer: 0
   m_Name: Checkpoint
-  m_TagString: Untagged
+  m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,7 +137,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.06104088, y: -0.860157}
@@ -165,8 +165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcd5c5eb566e1ee44ae5f0ca6176640d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kiwi: 0
-  kiwiGoal: 5
-  hasReachCheckpoint: 0
-  kiwiText: {fileID: 0}
+  item: 0
+  itemGoal: 5
+  itemText: {fileID: 0}
   collectSound: {fileID: 0}
+  finishSound: {fileID: 0}
+  isFinished: 0

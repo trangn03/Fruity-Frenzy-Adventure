@@ -7,7 +7,7 @@ public class CameraFollow : MonoBehaviour
     public Transform target;
     public Vector2 minBounds;
     public Vector2 maxBounds;
-    public float offsetY = 0; // Offset to move camera downward
+    public float offsetY = 0;
 
     void Start()
     {

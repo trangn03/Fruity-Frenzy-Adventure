@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 4187462652634306799}
   - component: {fileID: 8164123099455592594}
   - component: {fileID: 1621324127197013777}
-  - component: {fileID: 889275817441756852}
   - component: {fileID: 5997410969042817037}
+  - component: {fileID: 2672507601602171795}
   m_Layer: 6
   m_Name: MovingPlatform
   m_TagString: Untagged
@@ -184,7 +184,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0.020124435, y: 0.12649757}
@@ -200,18 +200,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3962631, y: 0.12050736}
   m_EdgeRadius: 0
---- !u!114 &889275817441756852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5279526136284414971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57dcfa01baeea744d8ad3a39f6f8e796, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5997410969042817037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,4 +215,16 @@ MonoBehaviour:
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
-  speed: 3
+  speed: 5
+--- !u!114 &2672507601602171795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5279526136284414971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cf8a04b5281081459503a852b4f282d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

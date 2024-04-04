@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7170838362371959899}
   - component: {fileID: 8014855098259419131}
   - component: {fileID: 3314590693978416444}
-  - component: {fileID: 468776555113156119}
+  - component: {fileID: 4142792447993276383}
   m_Layer: 0
   m_Name: Saw
   m_TagString: Trap
@@ -147,8 +147,8 @@ MonoBehaviour:
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
-  speed: 2
---- !u!114 &468776555113156119
+  speed: 5
+--- !u!114 &4142792447993276383
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6090716457445951989}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95f6c850967678e4fa4d0f8d53c741a7, type: 3}
+  m_Script: {fileID: 11500000, guid: 594daa171fc7d6445899e8a4f3219ddc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 3

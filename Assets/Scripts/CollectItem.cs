@@ -8,7 +8,6 @@ public class CollectItem : MonoBehaviour
 {
     public int item = 0;
     public int itemGoal = 5;
-    public bool hasReachCheckpoint = false;
     public Text itemText;
     public AudioSource collectSound;
     public AudioSource finishSound;
@@ -16,7 +15,7 @@ public class CollectItem : MonoBehaviour
 
     void Start()
     {
-        finishSound = GetComponent<AudioSource>();
+
     }
 
     public void OnTriggerEnter2D(Collider2D collision) {
@@ -29,21 +28,22 @@ public class CollectItem : MonoBehaviour
         }
 
         if (collision.gameObject.CompareTag("Checkpoint")) {
-            hasReachCheckpoint = true;
-            if (item == itemGoal && hasReachCheckpoint) {
-                Debug.Log("All items collected and checkpoint reached. Moving to next level.");
-                NextLevel();
+            finishSound.Play();
+            if (item >= itemGoal) {
+                Invoke("NextLevel", 1f);
             }
             else {
-                Debug.Log("Not enough items collected or checkpoint not reached. Reloading scene.");
                 ReloadScene();
             }
         }
 
-        if (collision.gameObject.CompareTag("Player")) {
-            finishSound.Play();
-            isFinished = true;
-            Invoke("NextLevel", 1.5f); // This seems unnecessary as it will call NextLevel() again.
+        if (collision.gameObject.CompareTag("End Game")) {
+            if (item >= itemGoal) {
+                SceneManager.LoadScene("End Scene");
+            }
+            else {
+                ReloadScene();
+            }
         }
     }
 

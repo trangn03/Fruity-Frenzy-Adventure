@@ -12,8 +12,6 @@ TagManager:
   - Item
   - Trampoline
   - Ice
-  - Kiwi
-  - Fan
   layers:
   - Default
   - TransparentFX

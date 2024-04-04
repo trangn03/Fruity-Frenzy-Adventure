@@ -11,15 +11,11 @@ public class PlayerMovement : MonoBehaviour
     public BoxCollider2D boxCollider;
 
     private float movingHori;
-    [SerializeField] 
-    private float movingSpeed;
-    [SerializeField] 
-    private float jumping;
+    [SerializeField] private float movingSpeed;
+    [SerializeField] private float jumping;
     private enum MovementState {idle, running, jumping, falling};
-    [SerializeField]
-    private LayerMask jumponGround;
-    [SerializeField]
-    public AudioSource jumpSound;
+    [SerializeField] private LayerMask jumponGround;
+    [SerializeField] public AudioSource jumpSound;
 
     // Start is called before the first frame update
     void Start()
@@ -86,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Trampoline"))
         {
             jumpSound.Play();
-            rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumping * 1.5f); // Double jump height
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumping * 1.7f);
         }
     }
 }

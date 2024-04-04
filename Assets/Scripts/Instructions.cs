@@ -22,6 +22,6 @@ public class Instructions : MonoBehaviour
     }
 
     public void playGame() {
-        SceneManager.LoadScene("Test Level");
+        SceneManager.LoadScene("Level 1");
     }
 }

@@ -1082,9 +1082,8 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Use the arrow keys (\u2191, \u2190, \u2192) or the W, A, D keys to move\nYou
-    will start the game with 3 lives. Colliding with a trap will cost you one life.\nNavigate
-    through all levels by collecting all the fruits and avoid the traps to win the
-    game\nHave Fun!"
+    have 3 lives for each level.\nAvoid the traps and collect all 5 fruits to move
+    on to the next level.\n                                           Have Fun!"
 --- !u!222 &2044722378
 CanvasRenderer:
   m_ObjectHideFlags: 0

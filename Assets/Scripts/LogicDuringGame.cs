@@ -7,25 +7,30 @@ using UnityEngine.UI;
 public class LogicDuringGame : MonoBehaviour
 {
     public bool GameActive = false;
+    public AudioControl music;
     // Start is called before the first frame update
     void Start()
     {
         playGame();
+        music = FindObjectOfType<AudioControl>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void playGame() {
         Time.timeScale = 1f;
+        music.playMusic();
         GameActive = true;
     }
 
     public void pauseGame() {
         Time.timeScale = 0f;
+        music.stopMusic();
         GameActive = false;
     }
 

@@ -3,26 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using System;
 
 public class PlayerLife : MonoBehaviour
 {
-    public Animator animator;
-    public Rigidbody2D rigidBody;
     [SerializeField] public AudioSource deathSound;
     public Text lifeText;
     public int maxLife = 3;
     public int currentLife;
     [SerializeField] public float fallThreshold;
-    public float fanForce = 1f;
-    public float fanRestart = 1f;
-    public GameObject iceParticle;
 
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>();
-        rigidBody = GetComponent<Rigidbody2D>();
         currentLife = maxLife;
         UpdateLife();
 

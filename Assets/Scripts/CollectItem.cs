@@ -11,7 +11,6 @@ public class CollectItem : MonoBehaviour
     public Text itemText;
     public AudioSource collectSound;
     public AudioSource finishSound;
-    public bool isFinished = false;
 
     void Start()
     {

@@ -1,7 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -10,11 +11,11 @@ public class PlayerMovement : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public BoxCollider2D boxCollider;
 
-    private float movingHori;
-    [SerializeField] private float movingSpeed;
-    [SerializeField] private float jumping;
+    public float movingHori;
+    [SerializeField] public float movingSpeed;
+    [SerializeField] public float jumping;
     private enum MovementState {idle, running, jumping, falling};
-    [SerializeField] private LayerMask jumponGround;
+    [SerializeField] public LayerMask jumponGround;
     [SerializeField] public AudioSource jumpSound;
 
     // Start is called before the first frame update
@@ -67,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
             state = MovementState.falling;
         }
 
-        Debug.Log("Current state: " + state.ToString()); // Debug log to check current state
+        Debug.Log("Current state: " + state.ToString());
 
         animator.SetInteger("state", (int)state);
     }
@@ -78,7 +79,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        // Check if collision is with a GameObject tagged as "Trampoline"
         if (collision.gameObject.CompareTag("Trampoline"))
         {
             jumpSound.Play();

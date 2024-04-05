@@ -1,3 +1,5 @@
+// Script referenced from https://discussions.unity.com/t/make-music-continue-playing-through-scenes/175434/6
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

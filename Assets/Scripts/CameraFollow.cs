@@ -1,3 +1,5 @@
+// Script referenced from Unity Example 1 in class
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

@@ -12,6 +12,8 @@ TagManager:
   - Item
   - Trampoline
   - Ice
+  - Kiwi
+  - Enemy
   layers:
   - Default
   - TransparentFX

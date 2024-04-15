@@ -35,6 +35,10 @@ public class BeginGame : MonoBehaviour
         SceneManager.LoadScene("Instructions");
     }
 
+    public void settingsGame() {
+        SceneManager.LoadScene("Settings");
+    }
+
     public void quitGame() {
         Application.Quit();
     }

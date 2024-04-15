@@ -89727,7 +89727,6 @@ MonoBehaviour:
   itemText: {fileID: 0}
   collectSound: {fileID: 0}
   finishSound: {fileID: 0}
-  isFinished: 0
 --- !u!1 &718659200
 GameObject:
   m_ObjectHideFlags: 0
@@ -90063,7 +90062,6 @@ MonoBehaviour:
   itemText: {fileID: 0}
   collectSound: {fileID: 0}
   finishSound: {fileID: 0}
-  isFinished: 0
 --- !u!1 &781744913
 GameObject:
   m_ObjectHideFlags: 0
@@ -90246,6 +90244,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   spriteRenderer: {fileID: 0}
   boxCollider: {fileID: 0}
+  movingHori: 0
   movingSpeed: 7
   jumping: 8
   jumponGround:
@@ -90290,7 +90289,6 @@ MonoBehaviour:
   itemText: {fileID: 1643004725}
   collectSound: {fileID: 781744923}
   finishSound: {fileID: 781744925}
-  isFinished: 0
 --- !u!114 &781744921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90303,16 +90301,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f2b84505d32b942a17157bc2063dad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  rigidBody: {fileID: 0}
   deathSound: {fileID: 781744924}
   lifeText: {fileID: 1990284372}
   maxLife: 3
   currentLife: 0
   fallThreshold: -10
-  fanForce: 1
-  fanRestart: 1
-  iceParticle: {fileID: 0}
 --- !u!82 &781744922
 AudioSource:
   m_ObjectHideFlags: 0
@@ -91191,7 +91184,6 @@ MonoBehaviour:
   itemText: {fileID: 0}
   collectSound: {fileID: 0}
   finishSound: {fileID: 0}
-  isFinished: 0
 --- !u!1001 &1060937813
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -91357,7 +91349,6 @@ MonoBehaviour:
   itemText: {fileID: 0}
   collectSound: {fileID: 0}
   finishSound: {fileID: 0}
-  isFinished: 0
 --- !u!1 &1094950004
 GameObject:
   m_ObjectHideFlags: 0
@@ -92515,6 +92506,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1439900826}
   - {fileID: 1643004724}
   - {fileID: 718659201}
   - {fileID: 1280274269}
@@ -92631,6 +92623,85 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1718690558}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1439900823
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1439900826}
+  - component: {fileID: 1439900825}
+  - component: {fileID: 1439900824}
+  m_Layer: 5
+  m_Name: Level 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1439900824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439900823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 0a40f262931cda547b7dc0993db6d332, type: 3}
+    m_FontSize: 60
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 6
+    m_MaxSize: 60
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Level 2
+--- !u!222 &1439900825
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439900823}
+  m_CullTransparentMesh: 1
+--- !u!224 &1439900826
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439900823}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1421232458}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 480.45007}
+  m_SizeDelta: {x: 318.6582, y: 94.741}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1445988658
 GameObject:
   m_ObjectHideFlags: 0
@@ -93509,7 +93580,6 @@ MonoBehaviour:
   itemText: {fileID: 0}
   collectSound: {fileID: 0}
   finishSound: {fileID: 0}
-  isFinished: 0
 --- !u!1001 &1806933422
 PrefabInstance:
   m_ObjectHideFlags: 0

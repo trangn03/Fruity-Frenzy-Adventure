@@ -6,8 +6,8 @@ public class KnightRanged : MonoBehaviour
 {
     [SerializeField] public float attackCooldown;
     [SerializeField] public float attackRange;
-    [SerializeField] public float collideDistance; 
     [SerializeField] public int damage;
+    [SerializeField] public float collideDistance;
     [SerializeField] public BoxCollider2D collide;
     [SerializeField] public LayerMask knight; 
     private float cooldownTimer = Mathf.Infinity;
@@ -40,9 +40,8 @@ public class KnightRanged : MonoBehaviour
 
     public void RangeAttack() {
         cooldownTimer = 0;
-        // Shoot projectile
         fireballs[findFireball()].transform.position = firepoint.position;
-        // fireballs[findFireball()].GetComponent<EnemyProjectile>().ActivateProjectile();
+        fireballs[findFireball()].GetComponent<EnemyProjectile>().ActivateProjectile();
 
     }
 

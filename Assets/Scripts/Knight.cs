@@ -17,11 +17,13 @@ public class Knight : MonoBehaviour
     [SerializeField] public LayerMask knight; 
     private float cooldownTimer = Mathf.Infinity;
     public Animator animator;
+    public KnightPatrol knightPatrol;
     
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
+        knightPatrol = GetComponentInParent<KnightPatrol>();
     }
 
     // Update is called once per frame
@@ -34,9 +36,12 @@ public class Knight : MonoBehaviour
                 animator.SetTrigger("Attack");
             }
         }
+        if (knightPatrol != null) {
+            knightPatrol.enabled = !playerInsight();
+        }
     }
 
-    bool playerInsight() {
+    public bool playerInsight() {
         RaycastHit2D hit = Physics2D.BoxCast(collide.bounds.center + transform.right * attackRange * transform.localScale.x * collideDistance , 
         new Vector3(collide.bounds.size.x * attackRange, collide.bounds.size.y, collide.bounds.size.z), 0, Vector2.left, 0, knight);
         return hit.collider != null;

@@ -10,8 +10,8 @@ public class EnemyProjectile : EnemyDamage
     [SerializeField] public float resetTime; 
     public float lifeTime;
     public Animator animator;
-    //public BoxCollider2D collide;
-    //public bool hit; 
+    public BoxCollider2D collide;
+    public bool hit; 
     // Start is called before the first frame update
     void Start()
     {
@@ -22,9 +22,9 @@ public class EnemyProjectile : EnemyDamage
     // Update is called once per frame
     void Update()
     {
-        // if (hit) {
-        //     return;
-        // }
+        if (hit) {
+            return;
+        }
         float movementSpeed = speed * Time.deltaTime;
         transform.Translate(movementSpeed, 0, 0);
         lifeTime += Time.deltaTime;
@@ -54,7 +54,7 @@ public class EnemyProjectile : EnemyDamage
     //     }
     // }
 
-    // public void Deactivate() {
-    //     gameObject.SetActive(false);
-    // }
+    public void Deactivate() {
+        gameObject.SetActive(false);
+    }
 }

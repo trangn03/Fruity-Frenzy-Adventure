@@ -23,7 +23,6 @@ public class CollectItem : MonoBehaviour
             Destroy(collision.gameObject);
             item++;
             itemText.text = item.ToString();
-            Debug.Log("Item collected. Total items: " + item);
         }
 
         if (collision.gameObject.CompareTag("Checkpoint")) {

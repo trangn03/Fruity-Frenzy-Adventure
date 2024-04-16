@@ -11,8 +11,8 @@ TagManager:
   - End Game
   - Item
   - Trampoline
-  - Ice
   - Enemy
+  - Ice
   layers:
   - Default
   - TransparentFX

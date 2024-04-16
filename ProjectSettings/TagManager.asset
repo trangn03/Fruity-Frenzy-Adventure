@@ -12,7 +12,6 @@ TagManager:
   - Item
   - Trampoline
   - Ice
-  - Kiwi
   - Enemy
   layers:
   - Default
@@ -22,8 +21,8 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
-  - 
+  - Enemy
+  - Player
   - 
   - 
   - 

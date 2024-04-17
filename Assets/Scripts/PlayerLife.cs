@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Unity.Burst.Intrinsics;
 
 public class PlayerLife : MonoBehaviour
 {
     [SerializeField] public AudioSource deathSound;
     public Text lifeText;
-    public int maxLife = 3;
+    [SerializeField] public int maxLife = 3;
     public int currentLife;
     [SerializeField] public float fallThreshold;
 
@@ -43,6 +44,11 @@ public class PlayerLife : MonoBehaviour
         if (currentLife == 0) {
             Die();
         }
+    }
+
+    public void GainLife(int life) {
+        currentLife += life;
+        UpdateLife();
     }
 
     public void UpdateLife() {

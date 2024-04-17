@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
-public class EnemyDamage : MonoBehaviour
+public class Heart : MonoBehaviour
 {
-    [SerializeField] protected int damage;
+    [SerializeField] protected int life;
+    public AudioSource collectheartSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +20,12 @@ public class EnemyDamage : MonoBehaviour
 
     protected void OnTriggerEnter2D(Collider2D collision) {
         if (collision.tag == "Player") {
-            collision.gameObject.GetComponent<PlayerLife>().TakeLife(damage);
+            collision.gameObject.GetComponent<PlayerLife>().GainLife(life);
+            Destroy(gameObject);
+        }
+
+        if (collision.gameObject.CompareTag("Heart")) {
+            collectheartSound.Play();
         }
     }
 }

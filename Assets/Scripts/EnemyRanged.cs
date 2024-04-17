@@ -15,6 +15,8 @@ public class KnightRanged : MonoBehaviour
     public KnightPatrol knightPatrol;
     [SerializeField] public Transform firepoint; 
     [SerializeField] public GameObject[] fireballs; 
+    [SerializeField] public Transform plantpoint;
+    [SerializeField] public GameObject[] plantbullets;
 
     // Start is called before the first frame update
     void Start()
@@ -43,11 +45,23 @@ public class KnightRanged : MonoBehaviour
         fireballs[findFireball()].transform.position = firepoint.position;
         fireballs[findFireball()].GetComponent<EnemyProjectile>().ActivateProjectile();
 
+        plantbullets[findBullets()].transform.position = plantpoint.position;
+        plantbullets[findBullets()].GetComponent<EnemyProjectile>().ActivateProjectile();
+
     }
 
     public int findFireball() {
         for (int i = 0; i < fireballs.Length; i++) {
             if (!fireballs[i].activeInHierarchy) {
+                return i;
+            }
+        }
+        return 0;
+    }
+
+    public int findBullets() {
+        for (int i = 0; i < plantbullets.Length; i++) {
+            if (!plantbullets[i].activeInHierarchy) {
                 return i;
             }
         }

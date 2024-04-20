@@ -7,18 +7,10 @@ using UnityEngine.UI;
 public class BeginGame : MonoBehaviour
 {
     [SerializeField] AudioSource sound;
-    [SerializeField] Slider volume;
     // Start is called before the first frame update
     void Start()
     {
-        if (!PlayerPrefs.HasKey("musicVolume")) {
-            PlayerPrefs.SetFloat("musicVolume", 0.5f);
-            loadVolume();
-        }
-        else {
-            loadVolume();
-        }
-        
+
     }
 
     // Update is called once per frame
@@ -43,16 +35,11 @@ public class BeginGame : MonoBehaviour
         Application.Quit();
     }
 
-    public void changeVolume() {
-        AudioListener.volume = volume.value;
-        saveVolume();
+    public void soundOn() {
+        sound.Play();
     }
 
-    private void loadVolume() {
-        volume.value = PlayerPrefs.GetFloat("musicVolume");
-    }
-
-    private void saveVolume() {
-        PlayerPrefs.SetFloat("musicVolume", volume.value);
+    public void soundOff() {
+        sound.Stop();
     }
 }

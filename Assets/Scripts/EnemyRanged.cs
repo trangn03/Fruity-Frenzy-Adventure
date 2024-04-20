@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class KnightRanged : MonoBehaviour
@@ -16,7 +17,7 @@ public class KnightRanged : MonoBehaviour
     [SerializeField] public Transform firepoint; 
     [SerializeField] public GameObject[] fireballs; 
     [SerializeField] public Transform plantpoint;
-    [SerializeField] public GameObject[] plantbullets;
+    [SerializeField] public GameObject[] bullets;
 
     // Start is called before the first frame update
     void Start()
@@ -40,14 +41,16 @@ public class KnightRanged : MonoBehaviour
         }
     }
 
-    public void RangeAttack() {
+    public void FireBall_RangeAttack() {
         cooldownTimer = 0;
         fireballs[findFireball()].transform.position = firepoint.position;
         fireballs[findFireball()].GetComponent<EnemyProjectile>().ActivateProjectile();
+    }
 
-        plantbullets[findBullets()].transform.position = plantpoint.position;
-        plantbullets[findBullets()].GetComponent<EnemyProjectile>().ActivateProjectile();
-
+    public void Bullet_RangeAttack() {
+        cooldownTimer = 0;
+        bullets[findBullet()].transform.position = plantpoint.position;
+        bullets[findBullet()].GetComponent<EnemyProjectile>().ActivateProjectile();
     }
 
     public int findFireball() {
@@ -59,9 +62,9 @@ public class KnightRanged : MonoBehaviour
         return 0;
     }
 
-    public int findBullets() {
-        for (int i = 0; i < plantbullets.Length; i++) {
-            if (!plantbullets[i].activeInHierarchy) {
+    public int findBullet() {
+        for (int i = 0; i < bullets.Length; i++) {
+            if (!bullets[i].activeInHierarchy) {
                 return i;
             }
         }

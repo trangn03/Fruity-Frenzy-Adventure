@@ -13,6 +13,9 @@ TagManager:
   - Trampoline
   - Enemy
   - Ice
+  - Zone
+  - Up
+  - Down
   layers:
   - Default
   - TransparentFX

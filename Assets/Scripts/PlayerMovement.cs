@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
     private enum MovementState {idle, running, jumping, falling};
     [SerializeField] public LayerMask jumponGround;
     [SerializeField] public AudioSource jumpSound;
+    [SerializeField] public float up;
+    [SerializeField] public float down;
 
     // Start is called before the first frame update
     void Start()
@@ -83,6 +85,21 @@ public class PlayerMovement : MonoBehaviour
         {
             jumpSound.Play();
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumping * 1.7f);
+        }
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Up"))
+        {
+            transform.localScale *= up;
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.CompareTag("Down"))
+        {
+            transform.localScale *= down;
+            Destroy(collision.gameObject);
         }
     }
 }

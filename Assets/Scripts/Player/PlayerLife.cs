@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using Unity.Burst.Intrinsics;
 
 public class PlayerLife : MonoBehaviour
 {

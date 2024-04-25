@@ -1,58 +1,74 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class FallingPlatform : MonoBehaviour
 {
-    [SerializeField] private GameObject container;
-
+    [SerializeField] public float fallDelay = 1f;
+    [SerializeField] public float destroyDelay = 2f;
+    [SerializeField] public float restartDelay = 5f;
+    private Vector2 originalPosition;
+    private Animator anim;
+    private string currentState = "FallingFlatform";
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private Animator animator;
-    [SerializeField] private SpringJoint2D springJoint;
 
-    [SerializeField] private float fallDelay = 2.5f;
-    [SerializeField] private float destroyDelay = 3f;
-
-    private static readonly int fallingAnim = Animator.StringToHash("Falling");
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        originalPosition = transform.position;
+        anim = GetComponent<Animator>();
+        ChangeAnimationState("FallingFlatform");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-     void Awake()
-    {
-        if (rb == null)
-            rb = GetComponent<Rigidbody2D>();
-
-        if (animator == null)
-            animator = GetComponent<Animator>();
-
-        if (springJoint == null)
-            springJoint = GetComponent<SpringJoint2D>();
-    }
-
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            springJoint.enabled = true;
-            rb.bodyType = RigidbodyType2D.Dynamic;
-            Invoke(nameof(Fall), fallDelay);
+            StartCoroutine(Fall());
         }
     }
 
-    private void Fall()
+    private IEnumerator Fall()
     {
-        springJoint.enabled = false;
-        animator.SetTrigger(fallingAnim);
+        yield return new WaitForSeconds(fallDelay);
+        rb.bodyType = RigidbodyType2D.Dynamic;
+        ChangeAnimationState("FallingFlatform_Off");
+        yield return new WaitForSeconds(destroyDelay);
+        gameObject.SetActive(false);
+        Invoke("Restart", restartDelay);
+    }
 
-        Destroy(container, destroyDelay);
+    private void Restart()
+    {
+        gameObject.SetActive(true);
+        rb.bodyType = RigidbodyType2D.Kinematic;
+        transform.position = originalPosition;
+        ChangeAnimationState("FallingFlatform");
+    }
+
+    private void ChangeAnimationState(string newState)
+    {
+        if (anim == null)
+        {
+            return;
+        }
+
+        if (string.IsNullOrEmpty(newState))
+        {
+            return;
+        }
+
+        if (!anim.HasState(0, Animator.StringToHash(newState)))
+        {
+            return;
+        }
+
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName(newState))
+        {
+            return;
+        }
+
+        currentState = newState;
+        anim.Play(currentState);
     }
 }

@@ -42,18 +42,6 @@ public class EnemyProjectile : EnemyDamage
         //collide.enabled = true;
     }
 
-    // public void OnTriggerEnter2D(Collider2D collision) {
-    //     hit = true; 
-    //     base.OnTriggerEnter2D(collision);
-    //     collide.enabled = false;
-    //     if (animator != null) {
-    //         animator.SetTrigger("Explode");
-    //     }
-    //     else {
-    //         gameObject.SetActive(false);
-    //     }
-    // }
-
     public void Deactivate() {
         gameObject.SetActive(false);
     }

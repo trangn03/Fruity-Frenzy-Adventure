@@ -16,6 +16,7 @@ TagManager:
   - Zone
   - Up
   - Down
+  - PointKill
   layers:
   - Default
   - TransparentFX

@@ -12,11 +12,11 @@ public class WallClimbSlide : MonoBehaviour
     [SerializeField] private float wallSlideSpeed = 2f;
     [SerializeField] private float wallClimbSpeed = 6f;
     private Rigidbody2D rb;
-    [SerializeField] private float wallCheckDistance = 0.5f;
+    [SerializeField] private float wallCheckDistance;
     [SerializeField] private LayerMask wallLayer;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
@@ -24,7 +24,7 @@ public class WallClimbSlide : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (!isTouchingWall) {
             rb.gravityScale = 1f;
@@ -41,20 +41,21 @@ public class WallClimbSlide : MonoBehaviour
             else {
                 isTouchingWall = false;
             }
-        } else {
+        }
+        else {
             isTouchingWall = false;
-        };
+        }
         wallClimb(isTouchingWall, isTouchGrounded);
     }
 
-    public void wallClimb(bool isTouchingWall, bool isTouchGrounded) {
+    private void wallClimb(bool isTouchingWall, bool isTouchGrounded) {
         if (isTouchGrounded) {
             jumpOff = false;
             return;
         }
 
         if (isTouchingWall) {
-            if (Input.GetButton("Jump")) {
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) {
                 rb.velocity = new Vector2(rb.velocity.x, wallClimbSpeed);
                 rb.gravityScale = 0f;
                 jumpOff = true;
@@ -74,12 +75,12 @@ public class WallClimbSlide : MonoBehaviour
         }
     }
 
-    public void wallSlide() {
+    private void wallSlide() {
         rb.gravityScale = 1f;
         rb.velocity = new Vector2(rb.velocity.x, -wallSlideSpeed);
     }
 
-    public bool isGrounded() {
+    private bool isGrounded() {
         return Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, 0.1f, jumpableGround);
     }
 

@@ -8,10 +8,11 @@ public class PlayerAnimation : MonoBehaviour
     private Animator anim;
     private Rigidbody2D rb;
     private bool isDead = false; 
+    private bool isAppear;
     private WallClimbSlide wallClimbSlide;
     private PlayerMovement playerMovement;
     private int currentCharacter = 0;
-    private enum AllCharacterState { Player_Death }
+    private enum AllCharacterState { Player_Appear, Player_Death }
     private ArrayList characterState = new ArrayList();
     private string currentState; 
     // Start is called before the first frame update
@@ -29,10 +30,25 @@ public class PlayerAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (isAppear) {
+            Appear();
+        }
+        else {
+            UpdateAnimationState();
+        }
     }
 
-    public void addCharacterState () {
+    private void Appear() {
+        rb.bodyType = RigidbodyType2D.Static;
+        ChangeAnimationState(AllCharacterState.Player_Appear.ToString());
+    }
+
+    private void updateAppear() {
+        rb.bodyType = RigidbodyType2D.Dynamic;
+        isAppear = false;
+    }
+
+    private void addCharacterState () {
         string[] pinkMan = new string[] {
             "Player_Idle", "Player_Falling", "Player_Jumping", "Player_Running", "Player_WallJump", "Player_DoubleJump",
         };
@@ -59,10 +75,13 @@ public class PlayerAnimation : MonoBehaviour
         isDead = value; 
     }
 
-    public void UpdateAnimationState()
+    private void UpdateAnimationState()
     {
-        if (isDead)
-        {
+        if (isAppear) {
+            ChangeAnimationState(AllCharacterState.Player_Appear.ToString());
+            isAppear = false;
+        }
+        else if (isDead) {
             ChangeAnimationState(AllCharacterState.Player_Death.ToString());
         }
         else if (wallClimbSlide.GetIsTouchingWall()) {
@@ -86,7 +105,7 @@ public class PlayerAnimation : MonoBehaviour
         
     }
 
-    public void ChangeAnimationState(string newState)
+    private void ChangeAnimationState(string newState)
     {
         if (anim == null)
         {

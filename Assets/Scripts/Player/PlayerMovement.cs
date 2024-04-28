@@ -7,32 +7,30 @@ using UnityEngine.SceneManagement;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private Animator animator;
     private SpriteRenderer sprite;
     private BoxCollider2D boxCollider;
-    [SerializeField] public LayerMask jumponGround;
+    [SerializeField] private LayerMask jumponGround;
     [SerializeField] public AudioSource jumpSound;
     [SerializeField] public float up;
     [SerializeField] public float down;
     private float dirX;
     private float jumps = 0;
     private bool isDoubleJump = false;
-    [SerializeField] public const int maxJumps = 2;
-    [SerializeField] public float moveSpeed = 7f;
-    [SerializeField] public float jumpForce = 7f;
+    [SerializeField] private const int maxJumps = 2;
+    [SerializeField] private float moveSpeed = 7f;
+    [SerializeField] private float jumpForce = 7f;
 
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
         boxCollider = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (ontheGround() || rb.velocity.y < -0.01f)
         {
@@ -48,14 +46,14 @@ public class PlayerMovement : MonoBehaviour
         return this.isDoubleJump;
     }
 
-    public void Move() {
+    private void Move() {
         dirX = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
         Flip();
     }
 
-    public void Jump() {
-        if (Input.GetButtonDown("Jump")) {
+    private void Jump() {
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)){
             if (ontheGround()) {
                 jumpSound.Play();
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
@@ -71,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void Flip() {
+    private void Flip() {
         if (dirX < 0 ) {
             sprite.flipX = true;
         }
@@ -80,8 +78,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     
-
-    public bool ontheGround() {
+    private bool ontheGround() {
         return Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, 0.1f, jumponGround);
     }
 

@@ -24,4 +24,8 @@ public class Instructions : MonoBehaviour
     public void playGame() {
         SceneManager.LoadScene("Level 1");
     }
+
+    public void settings() {
+        SceneManager.LoadScene("Settings");
+    }
 }

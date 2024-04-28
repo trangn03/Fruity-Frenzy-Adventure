@@ -6,74 +6,80 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public Rigidbody2D rigidBody;
-    public Animator animator;
-    public SpriteRenderer spriteRenderer;
-    public BoxCollider2D boxCollider;
-
-    public float movingHori;
-    [SerializeField] public float movingSpeed;
-    [SerializeField] public float jumping;
-    private enum MovementState {idle, running, jumping, falling};
+    private Rigidbody2D rb;
+    private Animator animator;
+    private SpriteRenderer sprite;
+    private BoxCollider2D boxCollider;
     [SerializeField] public LayerMask jumponGround;
     [SerializeField] public AudioSource jumpSound;
     [SerializeField] public float up;
     [SerializeField] public float down;
+    private float dirX;
+    private float jumps = 0;
+    private bool isDoubleJump = false;
+    [SerializeField] public const int maxJumps = 2;
+    [SerializeField] public float moveSpeed = 7f;
+    [SerializeField] public float jumpForce = 7f;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        rigidBody = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        sprite = GetComponent<SpriteRenderer>();
         boxCollider = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Movement();
-        AnimationUpdate();
-        
+        if (ontheGround() || rb.velocity.y < -0.01f)
+        {
+            isDoubleJump = false; 
+        }
+
+        Move();
+        Jump();
     }
 
-    public void Movement() {
-        movingHori = Input.GetAxis("Horizontal");
-        rigidBody.velocity = new Vector2(movingHori * movingSpeed, rigidBody.velocity.y);
-
-        if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && ontheGround()) {
-            jumpSound.Play();
-            rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumping);
-        }
-        
+    public bool GetIsDoubleJump()
+    {
+        return this.isDoubleJump;
     }
 
-    public void AnimationUpdate() {
-        MovementState state;
-
-        if (Mathf.Abs(movingHori) > 0f)
-        {
-            state = MovementState.running;
-            spriteRenderer.flipX = movingHori < 0f;
-        }
-        else
-        {
-            state = MovementState.idle;
-        }
-
-        if (rigidBody.velocity.y > 0.1f)
-        {
-            state = MovementState.jumping;
-        }
-        else if (rigidBody.velocity.y < -0.1f)
-        {
-            state = MovementState.falling;
-        }
-
-        Debug.Log("Current state: " + state.ToString());
-
-        animator.SetInteger("state", (int)state);
+    public void Move() {
+        dirX = Input.GetAxisRaw("Horizontal");
+        rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
+        Flip();
     }
+
+    public void Jump() {
+        if (Input.GetButtonDown("Jump")) {
+            if (ontheGround()) {
+                jumpSound.Play();
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                jumps = 1; 
+                isDoubleJump = false;
+            }
+            else if (jumps < maxJumps) {
+                jumpSound.Play();
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                jumps++;
+                isDoubleJump = true;
+            }
+        }
+    }
+
+    public void Flip() {
+        if (dirX < 0 ) {
+            sprite.flipX = true;
+        }
+        else if (dirX > 0) {
+            sprite.flipX = false;
+        }
+    }
+    
 
     public bool ontheGround() {
         return Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, 0.1f, jumponGround);
@@ -84,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Trampoline"))
         {
             jumpSound.Play();
-            rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumping * 1.7f);
+            rb.velocity = new Vector2(rb.velocity.x, jumps * 1.7f);
         }
     }
 

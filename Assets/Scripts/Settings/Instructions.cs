@@ -25,6 +25,10 @@ public class Instructions : MonoBehaviour
         SceneManager.LoadScene("Level 1");
     }
 
+    public void trapsandEnemies() {
+        SceneManager.LoadScene("Traps and Enemies");
+    }
+
     public void settings() {
         SceneManager.LoadScene("Settings");
     }

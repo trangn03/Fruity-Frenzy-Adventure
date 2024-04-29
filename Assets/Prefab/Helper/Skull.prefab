@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7787750627123315293}
   - component: {fileID: 3877157793310128590}
   - component: {fileID: 7002757606339636386}
-  - component: {fileID: 1185262220076254012}
   - component: {fileID: 1060636936425550373}
   - component: {fileID: 1195057213517012217}
+  - component: {fileID: 1185262220076254012}
   m_Layer: 6
   m_Name: Skull
   m_TagString: Untagged
@@ -155,19 +155,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.0417805, y: 2.6496348}
   m_EdgeRadius: 0
---- !u!114 &1185262220076254012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4901980815932003990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 594daa171fc7d6445899e8a4f3219ddc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
 --- !u!50 &1060636936425550373
 Rigidbody2D:
   serializedVersion: 4
@@ -211,12 +198,25 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -6.25, y: -0.58}
-  m_UseMotor: 0
+  m_ConnectedAnchor: {x: 13.267205, y: -2.0536213}
+  m_UseMotor: 1
   m_Motor:
-    m_MotorSpeed: 0
-    m_MaximumMotorForce: 10000
+    m_MotorSpeed: 10
+    m_MaximumMotorForce: 100000
   m_UseLimits: 1
   m_AngleLimits:
     m_LowerAngle: 0
     m_UpperAngle: -180
+--- !u!114 &1185262220076254012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4901980815932003990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 594daa171fc7d6445899e8a4f3219ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5

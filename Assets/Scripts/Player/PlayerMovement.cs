@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private const int maxJumps = 2;
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private float jumpForce = 7f;
+    [SerializeField] private float trampolineForce = 5f;
 
 
     // Start is called before the first frame update
@@ -87,7 +88,8 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Trampoline"))
         {
             jumpSound.Play();
-            rb.velocity = new Vector2(rb.velocity.x, jumps * 1.7f);
+            rb.velocity = new Vector2(rb.velocity.x, trampolineForce);
+            
         }
     }
 

@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 7565954927029854566}
   m_Layer: 0
   m_Name: Knight Patrol
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81,7 +81,7 @@ MonoBehaviour:
   left: {fileID: 3144713477030506557}
   right: {fileID: 7693215234604275587}
   enemy: {fileID: 6744828387882649793}
-  speed: 2
+  speed: 2.5
   initScale: {x: 0, y: 0, z: 0}
   idleState: 1
   idleTimer: 0

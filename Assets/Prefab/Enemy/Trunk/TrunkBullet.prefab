@@ -507,7 +507,7 @@ MonoBehaviour:
   pieces:
   - {fileID: 8612708414066041202}
   - {fileID: 6609299202371018197}
-  timeDestroy: 0.7
+  timeDestroy: 0.2
 --- !u!114 &1644880698929013885
 MonoBehaviour:
   m_ObjectHideFlags: 0

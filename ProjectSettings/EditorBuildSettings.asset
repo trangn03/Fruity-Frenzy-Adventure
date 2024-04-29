@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Instructions.unity
     guid: 2dfd5af58e47b304993b595fc0585186
   - enabled: 1
+    path: Assets/Scenes/Traps and Enemies.unity
+    guid: cd3b18da67ef7694b90d82e233357861
+  - enabled: 1
     path: Assets/Scenes/Settings.unity
     guid: 8a9cc77776d1961419c3d678ae1ea2f7
   - enabled: 0

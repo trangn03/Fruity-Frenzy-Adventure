@@ -47,24 +47,9 @@ public class KnightRanged : MonoBehaviour
         fireballs[findFireball()].GetComponent<EnemyProjectile>().ActivateProjectile();
     }
 
-    public void Bullet_RangeAttack() {
-        cooldownTimer = 0;
-        bullets[findBullet()].transform.position = plantpoint.position;
-        bullets[findBullet()].GetComponent<EnemyProjectile>().ActivateProjectile();
-    }
-
     public int findFireball() {
         for (int i = 0; i < fireballs.Length; i++) {
             if (!fireballs[i].activeInHierarchy) {
-                return i;
-            }
-        }
-        return 0;
-    }
-
-    public int findBullet() {
-        for (int i = 0; i < bullets.Length; i++) {
-            if (!bullets[i].activeInHierarchy) {
                 return i;
             }
         }

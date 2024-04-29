@@ -68,19 +68,16 @@ public class MushroomAnimation : MonoBehaviour
     {
         if (anim == null)
         {
-            Debug.LogError("Animator is not assigned!");
             return;
         }
 
         if (string.IsNullOrEmpty(newState))
         {
-            Debug.LogError("New state is null or empty!");
             return;
         }
 
         if (!anim.HasState(0, Animator.StringToHash(newState)))
         {
-            Debug.LogError("New state is not a valid animator state: " + newState);
             return;
         }
 

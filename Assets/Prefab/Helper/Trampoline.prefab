@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5779738158102651619}
   - component: {fileID: 8454833237084720603}
   - component: {fileID: 2176317296264246753}
+  - component: {fileID: 1657693447374419120}
   - component: {fileID: 7172945882618899877}
   m_Layer: 0
   m_Name: Trampoline
@@ -153,6 +154,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.6053066, y: 0.5287869}
   m_EdgeRadius: 0
+--- !u!50 &1657693447374419120
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766092058248783544}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!114 &7172945882618899877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,8 +197,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   jumpSound: {fileID: 0}
-  up: 0
-  down: 0
   moveSpeed: 7
   jumpForce: 7
-  trampolineForce: 10

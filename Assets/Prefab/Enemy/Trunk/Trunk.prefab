@@ -661,7 +661,7 @@ MonoBehaviour:
   - {fileID: 3017098249230825220}
   - {fileID: 304706153346929909}
   speed: 2
-  waitingTime: 3
+  waitingTime: 2
 --- !u!114 &5702864646883513012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -689,5 +689,5 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 1428220119105326769}
   bulletPrefab: {fileID: 9118000064644305166, guid: fa8cec394907bbb42af7f688e121135b, type: 3}
   bulletSpeed: 10
-  fireTime: 0.6
+  fireTime: 0.8
   bulletDirection: {x: -1, y: 0}

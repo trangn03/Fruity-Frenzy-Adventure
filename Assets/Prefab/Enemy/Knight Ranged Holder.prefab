@@ -276,7 +276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f959251b211fb1a4480a418980b4b1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCooldown: 1
+  attackCooldown: 1.5
   attackRange: 5
   damage: 1
   collideDistance: -1.1
@@ -289,6 +289,8 @@ MonoBehaviour:
   firepoint: {fileID: 6733807006634583245}
   fireballs:
   - {fileID: 4787157455156763520}
+  plantpoint: {fileID: 0}
+  bullets: []
 --- !u!1001 &1036917966413258005
 PrefabInstance:
   m_ObjectHideFlags: 0

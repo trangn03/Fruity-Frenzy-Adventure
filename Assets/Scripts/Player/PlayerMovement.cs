@@ -11,15 +11,12 @@ public class PlayerMovement : MonoBehaviour
     private BoxCollider2D boxCollider;
     [SerializeField] private LayerMask jumponGround;
     [SerializeField] public AudioSource jumpSound;
-    [SerializeField] public float up;
-    [SerializeField] public float down;
     private float dirX;
     private float jumps = 0;
     private bool isDoubleJump = false;
     [SerializeField] private const int maxJumps = 2;
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private float jumpForce = 7f;
-    [SerializeField] private float trampolineForce = 5f;
 
 
     // Start is called before the first frame update
@@ -88,23 +85,8 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Trampoline"))
         {
             jumpSound.Play();
-            rb.velocity = new Vector2(rb.velocity.x, trampolineForce);
+            rb.velocity = new Vector2(rb.velocity.x, 1.2f * jumpForce);
             
-        }
-    }
-
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Up"))
-        {
-            transform.localScale *= up;
-            Destroy(collision.gameObject);
-        }
-
-        if (collision.gameObject.CompareTag("Down"))
-        {
-            transform.localScale *= down;
-            Destroy(collision.gameObject);
         }
     }
 }

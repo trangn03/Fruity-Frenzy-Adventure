@@ -28,7 +28,7 @@ public class CollectItem : MonoBehaviour
         if (collision.gameObject.CompareTag("Checkpoint")) {
             finishSound.Play();
             if (item >= itemGoal) {
-                Invoke("NextLevel", 1f);
+                Invoke("NextLevel", 0.5f);
             }
             else {
                 ReloadScene();

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Chains : MonoBehaviour
 {
-    [SerializeField] private GameObject weight; // Vật nặng của con lắc
-    [SerializeField] private GameObject mount; // Điểm treo của con lắc
-    [SerializeField] private GameObject chains; // Điểm giữa xích của con lắc
+    [SerializeField] private GameObject weight; 
+    [SerializeField] private GameObject mount; 
+    [SerializeField] private GameObject chains;
     private Transform transformChains;
     private SpikeBall spikeBall;
 

@@ -1,3 +1,5 @@
+// Script reference from https://docs.unity3d.com/ScriptReference/Color-ctor.html
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +15,7 @@ public class CharacterSelection : MonoBehaviour
     [SerializeField] private Sprite ninjaFrog;
     [SerializeField] private Sprite virtualGuy;
     private Sprite[] sprites = new Sprite[4];
-    private Color newColor = new Color(0.2f, 0.2f, 1f);
+    private Color newColor = new Color(1f, 0.275f, 0.298f);
     private Color oldColor = new Color(0.2f, 1f, 0.4f);
     public Button okButton;
     // Start is called before the first frame update
